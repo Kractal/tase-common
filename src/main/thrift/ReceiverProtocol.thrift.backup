@@ -1,0 +1,29 @@
+#
+# Mission Receiver Interface definition
+#
+
+include "Exception.thrift"
+
+namespace java com.softsec.tase.receiver.service
+
+#
+# Constants definition
+#
+
+#
+# deprecated
+#
+
+service ReceiverProtocol{
+
+	#receive the mission from task manager.
+	i32 receiveMission(1:string missionID, 
+						  2:i32 moduleType, 
+						  3:i32 functionType, 
+						  4:i32 priority)
+				throws (1:exception.InvokeException e),
+
+	#report status to task manager.
+	string reportStatus() throws (1: exception.InvokeException e)
+					
+}

@@ -1,0 +1,20 @@
+#
+# Mission Monitor Interface Definition
+#
+
+include "exception.thrift"
+
+namespace java com.ruanan.tase.monitor.service
+
+#
+# Constants definiation
+#
+
+#
+# deprecated
+#
+
+service MonitorProtocol {
+	# heartbeat signal
+	string heartbeat() throws (1: exception.InvokeException e)
+}
