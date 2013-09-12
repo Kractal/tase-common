@@ -69,6 +69,7 @@ enum JobReturnMode {
 enum JobStatus {
 
 	COMMITTED,
+	SCHEDULING_FAILED,
 	SCHEDULED,
 	ISSUE_FAILED,
 	ISSUED,

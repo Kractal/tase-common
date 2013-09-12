@@ -41,4 +41,5 @@ public class TaskUtils {
 	public static JobLifecycle getJobLifecycle(long taskId) {
 		return JobLifecycle.findByValue(Integer.parseInt(String.valueOf(taskId).substring(1, 2)));
 	}
+	
 }

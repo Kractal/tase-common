@@ -16,15 +16,16 @@ import org.apache.thrift.TEnum;
  */
 public enum JobStatus implements org.apache.thrift.TEnum {
   COMMITTED(0),
-  SCHEDULED(1),
-  ISSUE_FAILED(2),
-  ISSUED(3),
-  RUNNING(4),
-  INTERRUPTED(5),
-  KILLED(6),
-  TIMEOUT(7),
-  FAILURE(8),
-  FINISHED(9);
+  SCHEDULING_FAILED(1),
+  SCHEDULED(2),
+  ISSUE_FAILED(3),
+  ISSUED(4),
+  RUNNING(5),
+  INTERRUPTED(6),
+  KILLED(7),
+  TIMEOUT(8),
+  FAILURE(9),
+  FINISHED(10);
 
   private final int value;
 
@@ -48,22 +49,24 @@ public enum JobStatus implements org.apache.thrift.TEnum {
       case 0:
         return COMMITTED;
       case 1:
-        return SCHEDULED;
+        return SCHEDULING_FAILED;
       case 2:
-        return ISSUE_FAILED;
+        return SCHEDULED;
       case 3:
-        return ISSUED;
+        return ISSUE_FAILED;
       case 4:
-        return RUNNING;
+        return ISSUED;
       case 5:
-        return INTERRUPTED;
+        return RUNNING;
       case 6:
-        return KILLED;
+        return INTERRUPTED;
       case 7:
-        return TIMEOUT;
+        return KILLED;
       case 8:
-        return FAILURE;
+        return TIMEOUT;
       case 9:
+        return FAILURE;
+      case 10:
         return FINISHED;
       default:
         return null;

@@ -63,9 +63,10 @@ public class NodeTrackerService {
      * 
      * @param nodeId
      * @param taskId
+     * @param jobPhase
      * @param taskStatus
      */
-    public int reportTaskExecutionStatus(String nodeId, long taskId, com.softsec.tase.common.rpc.domain.job.JobStatus taskStatus) throws com.softsec.tase.common.rpc.exception.InvalidRequestException, com.softsec.tase.common.rpc.exception.UnavailableException, com.softsec.tase.common.rpc.exception.TimeoutException, org.apache.thrift.TException;
+    public int reportTaskExecutionStatus(String nodeId, long taskId, com.softsec.tase.common.rpc.domain.job.JobPhase jobPhase, com.softsec.tase.common.rpc.domain.job.JobStatus taskStatus) throws com.softsec.tase.common.rpc.exception.InvalidRequestException, com.softsec.tase.common.rpc.exception.UnavailableException, com.softsec.tase.common.rpc.exception.TimeoutException, org.apache.thrift.TException;
 
     /**
      * check app duplication
@@ -131,7 +132,7 @@ public class NodeTrackerService {
 
     public void reportHeartbeat(com.softsec.tase.common.rpc.domain.node.NodePayload nodePayload, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.reportHeartbeat_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void reportTaskExecutionStatus(String nodeId, long taskId, com.softsec.tase.common.rpc.domain.job.JobStatus taskStatus, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.reportTaskExecutionStatus_call> resultHandler) throws org.apache.thrift.TException;
+    public void reportTaskExecutionStatus(String nodeId, long taskId, com.softsec.tase.common.rpc.domain.job.JobPhase jobPhase, com.softsec.tase.common.rpc.domain.job.JobStatus taskStatus, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.reportTaskExecutionStatus_call> resultHandler) throws org.apache.thrift.TException;
 
     public void checkAppDuplication(com.softsec.tase.common.rpc.domain.app.AppType appType, com.softsec.tase.common.rpc.domain.app.OriginType originType, String appChecksum, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.checkAppDuplication_call> resultHandler) throws org.apache.thrift.TException;
 
@@ -227,17 +228,18 @@ public class NodeTrackerService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "reportHeartbeat failed: unknown result");
     }
 
-    public int reportTaskExecutionStatus(String nodeId, long taskId, com.softsec.tase.common.rpc.domain.job.JobStatus taskStatus) throws com.softsec.tase.common.rpc.exception.InvalidRequestException, com.softsec.tase.common.rpc.exception.UnavailableException, com.softsec.tase.common.rpc.exception.TimeoutException, org.apache.thrift.TException
+    public int reportTaskExecutionStatus(String nodeId, long taskId, com.softsec.tase.common.rpc.domain.job.JobPhase jobPhase, com.softsec.tase.common.rpc.domain.job.JobStatus taskStatus) throws com.softsec.tase.common.rpc.exception.InvalidRequestException, com.softsec.tase.common.rpc.exception.UnavailableException, com.softsec.tase.common.rpc.exception.TimeoutException, org.apache.thrift.TException
     {
-      send_reportTaskExecutionStatus(nodeId, taskId, taskStatus);
+      send_reportTaskExecutionStatus(nodeId, taskId, jobPhase, taskStatus);
       return recv_reportTaskExecutionStatus();
     }
 
-    public void send_reportTaskExecutionStatus(String nodeId, long taskId, com.softsec.tase.common.rpc.domain.job.JobStatus taskStatus) throws org.apache.thrift.TException
+    public void send_reportTaskExecutionStatus(String nodeId, long taskId, com.softsec.tase.common.rpc.domain.job.JobPhase jobPhase, com.softsec.tase.common.rpc.domain.job.JobStatus taskStatus) throws org.apache.thrift.TException
     {
       reportTaskExecutionStatus_args args = new reportTaskExecutionStatus_args();
       args.setNodeId(nodeId);
       args.setTaskId(taskId);
+      args.setJobPhase(jobPhase);
       args.setTaskStatus(taskStatus);
       sendBase("reportTaskExecutionStatus", args);
     }
@@ -484,9 +486,9 @@ public class NodeTrackerService {
       }
     }
 
-    public void reportTaskExecutionStatus(String nodeId, long taskId, com.softsec.tase.common.rpc.domain.job.JobStatus taskStatus, org.apache.thrift.async.AsyncMethodCallback<reportTaskExecutionStatus_call> resultHandler) throws org.apache.thrift.TException {
+    public void reportTaskExecutionStatus(String nodeId, long taskId, com.softsec.tase.common.rpc.domain.job.JobPhase jobPhase, com.softsec.tase.common.rpc.domain.job.JobStatus taskStatus, org.apache.thrift.async.AsyncMethodCallback<reportTaskExecutionStatus_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      reportTaskExecutionStatus_call method_call = new reportTaskExecutionStatus_call(nodeId, taskId, taskStatus, resultHandler, this, ___protocolFactory, ___transport);
+      reportTaskExecutionStatus_call method_call = new reportTaskExecutionStatus_call(nodeId, taskId, jobPhase, taskStatus, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
@@ -494,11 +496,13 @@ public class NodeTrackerService {
     public static class reportTaskExecutionStatus_call extends org.apache.thrift.async.TAsyncMethodCall {
       private String nodeId;
       private long taskId;
+      private com.softsec.tase.common.rpc.domain.job.JobPhase jobPhase;
       private com.softsec.tase.common.rpc.domain.job.JobStatus taskStatus;
-      public reportTaskExecutionStatus_call(String nodeId, long taskId, com.softsec.tase.common.rpc.domain.job.JobStatus taskStatus, org.apache.thrift.async.AsyncMethodCallback<reportTaskExecutionStatus_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+      public reportTaskExecutionStatus_call(String nodeId, long taskId, com.softsec.tase.common.rpc.domain.job.JobPhase jobPhase, com.softsec.tase.common.rpc.domain.job.JobStatus taskStatus, org.apache.thrift.async.AsyncMethodCallback<reportTaskExecutionStatus_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.nodeId = nodeId;
         this.taskId = taskId;
+        this.jobPhase = jobPhase;
         this.taskStatus = taskStatus;
       }
 
@@ -507,6 +511,7 @@ public class NodeTrackerService {
         reportTaskExecutionStatus_args args = new reportTaskExecutionStatus_args();
         args.setNodeId(nodeId);
         args.setTaskId(taskId);
+        args.setJobPhase(jobPhase);
         args.setTaskStatus(taskStatus);
         args.write(prot);
         prot.writeMessageEnd();
@@ -786,7 +791,7 @@ public class NodeTrackerService {
       public reportTaskExecutionStatus_result getResult(I iface, reportTaskExecutionStatus_args args) throws org.apache.thrift.TException {
         reportTaskExecutionStatus_result result = new reportTaskExecutionStatus_result();
         try {
-          result.success = iface.reportTaskExecutionStatus(args.nodeId, args.taskId, args.taskStatus);
+          result.success = iface.reportTaskExecutionStatus(args.nodeId, args.taskId, args.jobPhase, args.taskStatus);
           result.setSuccessIsSet(true);
         } catch (com.softsec.tase.common.rpc.exception.InvalidRequestException ire) {
           result.ire = ire;
@@ -2945,7 +2950,8 @@ public class NodeTrackerService {
 
     private static final org.apache.thrift.protocol.TField NODE_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("nodeId", org.apache.thrift.protocol.TType.STRING, (short)1);
     private static final org.apache.thrift.protocol.TField TASK_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("taskId", org.apache.thrift.protocol.TType.I64, (short)2);
-    private static final org.apache.thrift.protocol.TField TASK_STATUS_FIELD_DESC = new org.apache.thrift.protocol.TField("taskStatus", org.apache.thrift.protocol.TType.I32, (short)3);
+    private static final org.apache.thrift.protocol.TField JOB_PHASE_FIELD_DESC = new org.apache.thrift.protocol.TField("jobPhase", org.apache.thrift.protocol.TType.I32, (short)3);
+    private static final org.apache.thrift.protocol.TField TASK_STATUS_FIELD_DESC = new org.apache.thrift.protocol.TField("taskStatus", org.apache.thrift.protocol.TType.I32, (short)4);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
@@ -2955,6 +2961,11 @@ public class NodeTrackerService {
 
     public String nodeId; // required
     public long taskId; // required
+    /**
+     * 
+     * @see com.softsec.tase.common.rpc.domain.job.JobPhase
+     */
+    public com.softsec.tase.common.rpc.domain.job.JobPhase jobPhase; // required
     /**
      * 
      * @see com.softsec.tase.common.rpc.domain.job.JobStatus
@@ -2967,9 +2978,14 @@ public class NodeTrackerService {
       TASK_ID((short)2, "taskId"),
       /**
        * 
+       * @see com.softsec.tase.common.rpc.domain.job.JobPhase
+       */
+      JOB_PHASE((short)3, "jobPhase"),
+      /**
+       * 
        * @see com.softsec.tase.common.rpc.domain.job.JobStatus
        */
-      TASK_STATUS((short)3, "taskStatus");
+      TASK_STATUS((short)4, "taskStatus");
 
       private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -2988,7 +3004,9 @@ public class NodeTrackerService {
             return NODE_ID;
           case 2: // TASK_ID
             return TASK_ID;
-          case 3: // TASK_STATUS
+          case 3: // JOB_PHASE
+            return JOB_PHASE;
+          case 4: // TASK_STATUS
             return TASK_STATUS;
           default:
             return null;
@@ -3039,6 +3057,8 @@ public class NodeTrackerService {
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
       tmpMap.put(_Fields.TASK_ID, new org.apache.thrift.meta_data.FieldMetaData("taskId", org.apache.thrift.TFieldRequirementType.REQUIRED, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
+      tmpMap.put(_Fields.JOB_PHASE, new org.apache.thrift.meta_data.FieldMetaData("jobPhase", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+          new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, com.softsec.tase.common.rpc.domain.job.JobPhase.class)));
       tmpMap.put(_Fields.TASK_STATUS, new org.apache.thrift.meta_data.FieldMetaData("taskStatus", org.apache.thrift.TFieldRequirementType.REQUIRED, 
           new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, com.softsec.tase.common.rpc.domain.job.JobStatus.class)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
@@ -3051,12 +3071,14 @@ public class NodeTrackerService {
     public reportTaskExecutionStatus_args(
       String nodeId,
       long taskId,
+      com.softsec.tase.common.rpc.domain.job.JobPhase jobPhase,
       com.softsec.tase.common.rpc.domain.job.JobStatus taskStatus)
     {
       this();
       this.nodeId = nodeId;
       this.taskId = taskId;
       setTaskIdIsSet(true);
+      this.jobPhase = jobPhase;
       this.taskStatus = taskStatus;
     }
 
@@ -3069,6 +3091,9 @@ public class NodeTrackerService {
         this.nodeId = other.nodeId;
       }
       this.taskId = other.taskId;
+      if (other.isSetJobPhase()) {
+        this.jobPhase = other.jobPhase;
+      }
       if (other.isSetTaskStatus()) {
         this.taskStatus = other.taskStatus;
       }
@@ -3083,6 +3108,7 @@ public class NodeTrackerService {
       this.nodeId = null;
       setTaskIdIsSet(false);
       this.taskId = 0;
+      this.jobPhase = null;
       this.taskStatus = null;
     }
 
@@ -3135,6 +3161,38 @@ public class NodeTrackerService {
 
     /**
      * 
+     * @see com.softsec.tase.common.rpc.domain.job.JobPhase
+     */
+    public com.softsec.tase.common.rpc.domain.job.JobPhase getJobPhase() {
+      return this.jobPhase;
+    }
+
+    /**
+     * 
+     * @see com.softsec.tase.common.rpc.domain.job.JobPhase
+     */
+    public reportTaskExecutionStatus_args setJobPhase(com.softsec.tase.common.rpc.domain.job.JobPhase jobPhase) {
+      this.jobPhase = jobPhase;
+      return this;
+    }
+
+    public void unsetJobPhase() {
+      this.jobPhase = null;
+    }
+
+    /** Returns true if field jobPhase is set (has been assigned a value) and false otherwise */
+    public boolean isSetJobPhase() {
+      return this.jobPhase != null;
+    }
+
+    public void setJobPhaseIsSet(boolean value) {
+      if (!value) {
+        this.jobPhase = null;
+      }
+    }
+
+    /**
+     * 
      * @see com.softsec.tase.common.rpc.domain.job.JobStatus
      */
     public com.softsec.tase.common.rpc.domain.job.JobStatus getTaskStatus() {
@@ -3183,6 +3241,14 @@ public class NodeTrackerService {
         }
         break;
 
+      case JOB_PHASE:
+        if (value == null) {
+          unsetJobPhase();
+        } else {
+          setJobPhase((com.softsec.tase.common.rpc.domain.job.JobPhase)value);
+        }
+        break;
+
       case TASK_STATUS:
         if (value == null) {
           unsetTaskStatus();
@@ -3202,6 +3268,9 @@ public class NodeTrackerService {
       case TASK_ID:
         return Long.valueOf(getTaskId());
 
+      case JOB_PHASE:
+        return getJobPhase();
+
       case TASK_STATUS:
         return getTaskStatus();
 
@@ -3220,6 +3289,8 @@ public class NodeTrackerService {
         return isSetNodeId();
       case TASK_ID:
         return isSetTaskId();
+      case JOB_PHASE:
+        return isSetJobPhase();
       case TASK_STATUS:
         return isSetTaskStatus();
       }
@@ -3254,6 +3325,15 @@ public class NodeTrackerService {
         if (!(this_present_taskId && that_present_taskId))
           return false;
         if (this.taskId != that.taskId)
+          return false;
+      }
+
+      boolean this_present_jobPhase = true && this.isSetJobPhase();
+      boolean that_present_jobPhase = true && that.isSetJobPhase();
+      if (this_present_jobPhase || that_present_jobPhase) {
+        if (!(this_present_jobPhase && that_present_jobPhase))
+          return false;
+        if (!this.jobPhase.equals(that.jobPhase))
           return false;
       }
 
@@ -3302,6 +3382,16 @@ public class NodeTrackerService {
           return lastComparison;
         }
       }
+      lastComparison = Boolean.valueOf(isSetJobPhase()).compareTo(typedOther.isSetJobPhase());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetJobPhase()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.jobPhase, typedOther.jobPhase);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
       lastComparison = Boolean.valueOf(isSetTaskStatus()).compareTo(typedOther.isSetTaskStatus());
       if (lastComparison != 0) {
         return lastComparison;
@@ -3344,6 +3434,14 @@ public class NodeTrackerService {
       sb.append(this.taskId);
       first = false;
       if (!first) sb.append(", ");
+      sb.append("jobPhase:");
+      if (this.jobPhase == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.jobPhase);
+      }
+      first = false;
+      if (!first) sb.append(", ");
       sb.append("taskStatus:");
       if (this.taskStatus == null) {
         sb.append("null");
@@ -3361,6 +3459,9 @@ public class NodeTrackerService {
         throw new org.apache.thrift.protocol.TProtocolException("Required field 'nodeId' was not present! Struct: " + toString());
       }
       // alas, we cannot check 'taskId' because it's a primitive and you chose the non-beans generator.
+      if (jobPhase == null) {
+        throw new org.apache.thrift.protocol.TProtocolException("Required field 'jobPhase' was not present! Struct: " + toString());
+      }
       if (taskStatus == null) {
         throw new org.apache.thrift.protocol.TProtocolException("Required field 'taskStatus' was not present! Struct: " + toString());
       }
@@ -3419,7 +3520,15 @@ public class NodeTrackerService {
                 org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
               }
               break;
-            case 3: // TASK_STATUS
+            case 3: // JOB_PHASE
+              if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+                struct.jobPhase = com.softsec.tase.common.rpc.domain.job.JobPhase.findByValue(iprot.readI32());
+                struct.setJobPhaseIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            case 4: // TASK_STATUS
               if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
                 struct.taskStatus = com.softsec.tase.common.rpc.domain.job.JobStatus.findByValue(iprot.readI32());
                 struct.setTaskStatusIsSet(true);
@@ -3453,6 +3562,11 @@ public class NodeTrackerService {
         oprot.writeFieldBegin(TASK_ID_FIELD_DESC);
         oprot.writeI64(struct.taskId);
         oprot.writeFieldEnd();
+        if (struct.jobPhase != null) {
+          oprot.writeFieldBegin(JOB_PHASE_FIELD_DESC);
+          oprot.writeI32(struct.jobPhase.getValue());
+          oprot.writeFieldEnd();
+        }
         if (struct.taskStatus != null) {
           oprot.writeFieldBegin(TASK_STATUS_FIELD_DESC);
           oprot.writeI32(struct.taskStatus.getValue());
@@ -3477,6 +3591,7 @@ public class NodeTrackerService {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         oprot.writeString(struct.nodeId);
         oprot.writeI64(struct.taskId);
+        oprot.writeI32(struct.jobPhase.getValue());
         oprot.writeI32(struct.taskStatus.getValue());
       }
 
@@ -3487,6 +3602,8 @@ public class NodeTrackerService {
         struct.setNodeIdIsSet(true);
         struct.taskId = iprot.readI64();
         struct.setTaskIdIsSet(true);
+        struct.jobPhase = com.softsec.tase.common.rpc.domain.job.JobPhase.findByValue(iprot.readI32());
+        struct.setJobPhaseIsSet(true);
         struct.taskStatus = com.softsec.tase.common.rpc.domain.job.JobStatus.findByValue(iprot.readI32());
         struct.setTaskStatusIsSet(true);
       }

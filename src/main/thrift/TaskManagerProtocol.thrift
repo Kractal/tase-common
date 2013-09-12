@@ -185,7 +185,8 @@ service NodeTrackerService {
 	i32 reportTaskExecutionStatus (
 		1:	required	string								nodeId,
 		2:	required	i64 								taskId,
-		3:	required	Job.JobStatus						taskStatus
+		3:	required	Job.JobPhase						jobPhase,
+		4:	required	Job.JobStatus						taskStatus
 	)	throws	(
 		1:	Exception.InvalidRequestException 				ire,
 		2:	Exception.UnavailableException 					ue,

@@ -3,8 +3,6 @@
  */
 package com.softsec.tase.common.domain.schedule;
 
-import com.softsec.tase.common.rpc.domain.app.AppType;
-import com.softsec.tase.common.rpc.domain.job.JobLifecycle;
 import com.softsec.tase.common.rpc.domain.job.JobOperationRequirement;
 import com.softsec.tase.common.rpc.domain.job.JobParameter;
 import com.softsec.tase.common.rpc.domain.job.JobPhase;
@@ -40,32 +38,7 @@ public class Task implements Comparable<Task>{
 	
 	private long loadedTime;
 	
-	/**
-	 * get job type from task id
-	 * @param taskId
-	 * @return
-	 */
-	public static int getJobType(long taskId) {
-		return (int)(taskId / 100000000);
-	}
-	
-	/**
-	 * get app type from task id
-	 * @param taskId
-	 * @return
-	 */
-	public static AppType getAppType(long taskId) {
-		return AppType.findByValue(Integer.parseInt(String.valueOf(taskId).substring(0, 1)));
-	}
-	
-	/**
-	 * get job life cycle from task id
-	 * @param taskId
-	 * @return
-	 */
-	public static JobLifecycle getJobLifecycle(long taskId) {
-		return JobLifecycle.findByValue(Integer.parseInt(String.valueOf(taskId).substring(1, 2)));
-	}
+	private int schedulingTime;
 	
 	public Task() {
 	}
@@ -160,6 +133,14 @@ public class Task implements Comparable<Task>{
 
 	public void setLoadedTime(long loadedTime) {
 		this.loadedTime = loadedTime;
+	}
+	
+	public int getSchedulingTime() {
+		return schedulingTime;
+	}
+	
+	public void setSchedulingTime(int schedulingTime) {
+		this.schedulingTime = schedulingTime;
 	}
 
 	@Override

@@ -38,21 +38,22 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
 
   private static final org.apache.thrift.protocol.TField TASK_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("taskId", org.apache.thrift.protocol.TType.I64, (short)1);
   private static final org.apache.thrift.protocol.TField PRIORITY_FIELD_DESC = new org.apache.thrift.protocol.TField("priority", org.apache.thrift.protocol.TType.I32, (short)2);
-  private static final org.apache.thrift.protocol.TField JOB_EXECUTION_MODE_FIELD_DESC = new org.apache.thrift.protocol.TField("jobExecutionMode", org.apache.thrift.protocol.TType.I32, (short)3);
-  private static final org.apache.thrift.protocol.TField JOB_RETURN_MODE_FIELD_DESC = new org.apache.thrift.protocol.TField("jobReturnMode", org.apache.thrift.protocol.TType.I32, (short)4);
-  private static final org.apache.thrift.protocol.TField TIMEOUT_FIELD_DESC = new org.apache.thrift.protocol.TField("timeout", org.apache.thrift.protocol.TType.I64, (short)5);
-  private static final org.apache.thrift.protocol.TField PROGRAM_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("programId", org.apache.thrift.protocol.TType.I64, (short)6);
-  private static final org.apache.thrift.protocol.TField BUNDLE_TYPE_FIELD_DESC = new org.apache.thrift.protocol.TField("bundleType", org.apache.thrift.protocol.TType.I32, (short)7);
-  private static final org.apache.thrift.protocol.TField PROGRAM_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("programName", org.apache.thrift.protocol.TType.STRING, (short)8);
-  private static final org.apache.thrift.protocol.TField SCRIPT_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("scriptName", org.apache.thrift.protocol.TType.STRING, (short)9);
-  private static final org.apache.thrift.protocol.TField SCRIPT_PATH_FIELD_DESC = new org.apache.thrift.protocol.TField("scriptPath", org.apache.thrift.protocol.TType.STRING, (short)10);
-  private static final org.apache.thrift.protocol.TField SCRIPT_MD5_FIELD_DESC = new org.apache.thrift.protocol.TField("scriptMd5", org.apache.thrift.protocol.TType.STRING, (short)11);
-  private static final org.apache.thrift.protocol.TField EXECUTABLE_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("executableName", org.apache.thrift.protocol.TType.STRING, (short)12);
-  private static final org.apache.thrift.protocol.TField EXECUTABLE_PATH_FIELD_DESC = new org.apache.thrift.protocol.TField("executablePath", org.apache.thrift.protocol.TType.STRING, (short)13);
-  private static final org.apache.thrift.protocol.TField EXECUTABLE_MD5_FIELD_DESC = new org.apache.thrift.protocol.TField("executableMd5", org.apache.thrift.protocol.TType.STRING, (short)14);
-  private static final org.apache.thrift.protocol.TField ENV_VARIABLES_FIELD_DESC = new org.apache.thrift.protocol.TField("envVariables", org.apache.thrift.protocol.TType.STRING, (short)15);
-  private static final org.apache.thrift.protocol.TField PARAMETER_FIELD_DESC = new org.apache.thrift.protocol.TField("parameter", org.apache.thrift.protocol.TType.STRUCT, (short)16);
-  private static final org.apache.thrift.protocol.TField RESULT_ADDRESS_FIELD_DESC = new org.apache.thrift.protocol.TField("resultAddress", org.apache.thrift.protocol.TType.STRING, (short)17);
+  private static final org.apache.thrift.protocol.TField JOB_PHASE_FIELD_DESC = new org.apache.thrift.protocol.TField("jobPhase", org.apache.thrift.protocol.TType.I32, (short)3);
+  private static final org.apache.thrift.protocol.TField JOB_EXECUTION_MODE_FIELD_DESC = new org.apache.thrift.protocol.TField("jobExecutionMode", org.apache.thrift.protocol.TType.I32, (short)4);
+  private static final org.apache.thrift.protocol.TField JOB_RETURN_MODE_FIELD_DESC = new org.apache.thrift.protocol.TField("jobReturnMode", org.apache.thrift.protocol.TType.I32, (short)5);
+  private static final org.apache.thrift.protocol.TField TIMEOUT_FIELD_DESC = new org.apache.thrift.protocol.TField("timeout", org.apache.thrift.protocol.TType.I64, (short)6);
+  private static final org.apache.thrift.protocol.TField PROGRAM_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("programId", org.apache.thrift.protocol.TType.I64, (short)7);
+  private static final org.apache.thrift.protocol.TField BUNDLE_TYPE_FIELD_DESC = new org.apache.thrift.protocol.TField("bundleType", org.apache.thrift.protocol.TType.I32, (short)8);
+  private static final org.apache.thrift.protocol.TField PROGRAM_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("programName", org.apache.thrift.protocol.TType.STRING, (short)9);
+  private static final org.apache.thrift.protocol.TField SCRIPT_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("scriptName", org.apache.thrift.protocol.TType.STRING, (short)10);
+  private static final org.apache.thrift.protocol.TField SCRIPT_PATH_FIELD_DESC = new org.apache.thrift.protocol.TField("scriptPath", org.apache.thrift.protocol.TType.STRING, (short)11);
+  private static final org.apache.thrift.protocol.TField SCRIPT_MD5_FIELD_DESC = new org.apache.thrift.protocol.TField("scriptMd5", org.apache.thrift.protocol.TType.STRING, (short)12);
+  private static final org.apache.thrift.protocol.TField EXECUTABLE_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("executableName", org.apache.thrift.protocol.TType.STRING, (short)13);
+  private static final org.apache.thrift.protocol.TField EXECUTABLE_PATH_FIELD_DESC = new org.apache.thrift.protocol.TField("executablePath", org.apache.thrift.protocol.TType.STRING, (short)14);
+  private static final org.apache.thrift.protocol.TField EXECUTABLE_MD5_FIELD_DESC = new org.apache.thrift.protocol.TField("executableMd5", org.apache.thrift.protocol.TType.STRING, (short)15);
+  private static final org.apache.thrift.protocol.TField ENV_VARIABLES_FIELD_DESC = new org.apache.thrift.protocol.TField("envVariables", org.apache.thrift.protocol.TType.STRING, (short)16);
+  private static final org.apache.thrift.protocol.TField PARAMETER_FIELD_DESC = new org.apache.thrift.protocol.TField("parameter", org.apache.thrift.protocol.TType.STRUCT, (short)17);
+  private static final org.apache.thrift.protocol.TField RESULT_ADDRESS_FIELD_DESC = new org.apache.thrift.protocol.TField("resultAddress", org.apache.thrift.protocol.TType.STRING, (short)18);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -66,6 +67,11 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
    * @see com.softsec.tase.common.rpc.domain.job.JobPriority
    */
   public com.softsec.tase.common.rpc.domain.job.JobPriority priority; // required
+  /**
+   * 
+   * @see com.softsec.tase.common.rpc.domain.job.JobPhase
+   */
+  public com.softsec.tase.common.rpc.domain.job.JobPhase jobPhase; // required
   /**
    * 
    * @see com.softsec.tase.common.rpc.domain.job.JobExecutionMode
@@ -104,31 +110,36 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
     PRIORITY((short)2, "priority"),
     /**
      * 
+     * @see com.softsec.tase.common.rpc.domain.job.JobPhase
+     */
+    JOB_PHASE((short)3, "jobPhase"),
+    /**
+     * 
      * @see com.softsec.tase.common.rpc.domain.job.JobExecutionMode
      */
-    JOB_EXECUTION_MODE((short)3, "jobExecutionMode"),
+    JOB_EXECUTION_MODE((short)4, "jobExecutionMode"),
     /**
      * 
      * @see com.softsec.tase.common.rpc.domain.job.JobReturnMode
      */
-    JOB_RETURN_MODE((short)4, "jobReturnMode"),
-    TIMEOUT((short)5, "timeout"),
-    PROGRAM_ID((short)6, "programId"),
+    JOB_RETURN_MODE((short)5, "jobReturnMode"),
+    TIMEOUT((short)6, "timeout"),
+    PROGRAM_ID((short)7, "programId"),
     /**
      * 
      * @see BundleType
      */
-    BUNDLE_TYPE((short)7, "bundleType"),
-    PROGRAM_NAME((short)8, "programName"),
-    SCRIPT_NAME((short)9, "scriptName"),
-    SCRIPT_PATH((short)10, "scriptPath"),
-    SCRIPT_MD5((short)11, "scriptMd5"),
-    EXECUTABLE_NAME((short)12, "executableName"),
-    EXECUTABLE_PATH((short)13, "executablePath"),
-    EXECUTABLE_MD5((short)14, "executableMd5"),
-    ENV_VARIABLES((short)15, "envVariables"),
-    PARAMETER((short)16, "parameter"),
-    RESULT_ADDRESS((short)17, "resultAddress");
+    BUNDLE_TYPE((short)8, "bundleType"),
+    PROGRAM_NAME((short)9, "programName"),
+    SCRIPT_NAME((short)10, "scriptName"),
+    SCRIPT_PATH((short)11, "scriptPath"),
+    SCRIPT_MD5((short)12, "scriptMd5"),
+    EXECUTABLE_NAME((short)13, "executableName"),
+    EXECUTABLE_PATH((short)14, "executablePath"),
+    EXECUTABLE_MD5((short)15, "executableMd5"),
+    ENV_VARIABLES((short)16, "envVariables"),
+    PARAMETER((short)17, "parameter"),
+    RESULT_ADDRESS((short)18, "resultAddress");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -147,35 +158,37 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
           return TASK_ID;
         case 2: // PRIORITY
           return PRIORITY;
-        case 3: // JOB_EXECUTION_MODE
+        case 3: // JOB_PHASE
+          return JOB_PHASE;
+        case 4: // JOB_EXECUTION_MODE
           return JOB_EXECUTION_MODE;
-        case 4: // JOB_RETURN_MODE
+        case 5: // JOB_RETURN_MODE
           return JOB_RETURN_MODE;
-        case 5: // TIMEOUT
+        case 6: // TIMEOUT
           return TIMEOUT;
-        case 6: // PROGRAM_ID
+        case 7: // PROGRAM_ID
           return PROGRAM_ID;
-        case 7: // BUNDLE_TYPE
+        case 8: // BUNDLE_TYPE
           return BUNDLE_TYPE;
-        case 8: // PROGRAM_NAME
+        case 9: // PROGRAM_NAME
           return PROGRAM_NAME;
-        case 9: // SCRIPT_NAME
+        case 10: // SCRIPT_NAME
           return SCRIPT_NAME;
-        case 10: // SCRIPT_PATH
+        case 11: // SCRIPT_PATH
           return SCRIPT_PATH;
-        case 11: // SCRIPT_MD5
+        case 12: // SCRIPT_MD5
           return SCRIPT_MD5;
-        case 12: // EXECUTABLE_NAME
+        case 13: // EXECUTABLE_NAME
           return EXECUTABLE_NAME;
-        case 13: // EXECUTABLE_PATH
+        case 14: // EXECUTABLE_PATH
           return EXECUTABLE_PATH;
-        case 14: // EXECUTABLE_MD5
+        case 15: // EXECUTABLE_MD5
           return EXECUTABLE_MD5;
-        case 15: // ENV_VARIABLES
+        case 16: // ENV_VARIABLES
           return ENV_VARIABLES;
-        case 16: // PARAMETER
+        case 17: // PARAMETER
           return PARAMETER;
-        case 17: // RESULT_ADDRESS
+        case 18: // RESULT_ADDRESS
           return RESULT_ADDRESS;
         default:
           return null;
@@ -229,6 +242,8 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
     tmpMap.put(_Fields.PRIORITY, new org.apache.thrift.meta_data.FieldMetaData("priority", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, com.softsec.tase.common.rpc.domain.job.JobPriority.class)));
+    tmpMap.put(_Fields.JOB_PHASE, new org.apache.thrift.meta_data.FieldMetaData("jobPhase", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, com.softsec.tase.common.rpc.domain.job.JobPhase.class)));
     tmpMap.put(_Fields.JOB_EXECUTION_MODE, new org.apache.thrift.meta_data.FieldMetaData("jobExecutionMode", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, com.softsec.tase.common.rpc.domain.job.JobExecutionMode.class)));
     tmpMap.put(_Fields.JOB_RETURN_MODE, new org.apache.thrift.meta_data.FieldMetaData("jobReturnMode", org.apache.thrift.TFieldRequirementType.REQUIRED, 
@@ -269,6 +284,7 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
   public Context(
     long taskId,
     com.softsec.tase.common.rpc.domain.job.JobPriority priority,
+    com.softsec.tase.common.rpc.domain.job.JobPhase jobPhase,
     com.softsec.tase.common.rpc.domain.job.JobExecutionMode jobExecutionMode,
     com.softsec.tase.common.rpc.domain.job.JobReturnMode jobReturnMode,
     long programId,
@@ -285,6 +301,7 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
     this.taskId = taskId;
     setTaskIdIsSet(true);
     this.priority = priority;
+    this.jobPhase = jobPhase;
     this.jobExecutionMode = jobExecutionMode;
     this.jobReturnMode = jobReturnMode;
     this.programId = programId;
@@ -307,6 +324,9 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
     this.taskId = other.taskId;
     if (other.isSetPriority()) {
       this.priority = other.priority;
+    }
+    if (other.isSetJobPhase()) {
+      this.jobPhase = other.jobPhase;
     }
     if (other.isSetJobExecutionMode()) {
       this.jobExecutionMode = other.jobExecutionMode;
@@ -360,6 +380,7 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
     setTaskIdIsSet(false);
     this.taskId = 0;
     this.priority = null;
+    this.jobPhase = null;
     this.jobExecutionMode = null;
     this.jobReturnMode = null;
     setTimeoutIsSet(false);
@@ -431,6 +452,38 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
   public void setPriorityIsSet(boolean value) {
     if (!value) {
       this.priority = null;
+    }
+  }
+
+  /**
+   * 
+   * @see com.softsec.tase.common.rpc.domain.job.JobPhase
+   */
+  public com.softsec.tase.common.rpc.domain.job.JobPhase getJobPhase() {
+    return this.jobPhase;
+  }
+
+  /**
+   * 
+   * @see com.softsec.tase.common.rpc.domain.job.JobPhase
+   */
+  public Context setJobPhase(com.softsec.tase.common.rpc.domain.job.JobPhase jobPhase) {
+    this.jobPhase = jobPhase;
+    return this;
+  }
+
+  public void unsetJobPhase() {
+    this.jobPhase = null;
+  }
+
+  /** Returns true if field jobPhase is set (has been assigned a value) and false otherwise */
+  public boolean isSetJobPhase() {
+    return this.jobPhase != null;
+  }
+
+  public void setJobPhaseIsSet(boolean value) {
+    if (!value) {
+      this.jobPhase = null;
     }
   }
 
@@ -834,6 +887,14 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
       }
       break;
 
+    case JOB_PHASE:
+      if (value == null) {
+        unsetJobPhase();
+      } else {
+        setJobPhase((com.softsec.tase.common.rpc.domain.job.JobPhase)value);
+      }
+      break;
+
     case JOB_EXECUTION_MODE:
       if (value == null) {
         unsetJobExecutionMode();
@@ -965,6 +1026,9 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
     case PRIORITY:
       return getPriority();
 
+    case JOB_PHASE:
+      return getJobPhase();
+
     case JOB_EXECUTION_MODE:
       return getJobExecutionMode();
 
@@ -1025,6 +1089,8 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
       return isSetTaskId();
     case PRIORITY:
       return isSetPriority();
+    case JOB_PHASE:
+      return isSetJobPhase();
     case JOB_EXECUTION_MODE:
       return isSetJobExecutionMode();
     case JOB_RETURN_MODE:
@@ -1087,6 +1153,15 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
       if (!(this_present_priority && that_present_priority))
         return false;
       if (!this.priority.equals(that.priority))
+        return false;
+    }
+
+    boolean this_present_jobPhase = true && this.isSetJobPhase();
+    boolean that_present_jobPhase = true && that.isSetJobPhase();
+    if (this_present_jobPhase || that_present_jobPhase) {
+      if (!(this_present_jobPhase && that_present_jobPhase))
+        return false;
+      if (!this.jobPhase.equals(that.jobPhase))
         return false;
     }
 
@@ -1257,6 +1332,16 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
     }
     if (isSetPriority()) {
       lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.priority, typedOther.priority);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = Boolean.valueOf(isSetJobPhase()).compareTo(typedOther.isSetJobPhase());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetJobPhase()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.jobPhase, typedOther.jobPhase);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -1443,6 +1528,14 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
     }
     first = false;
     if (!first) sb.append(", ");
+    sb.append("jobPhase:");
+    if (this.jobPhase == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.jobPhase);
+    }
+    first = false;
+    if (!first) sb.append(", ");
     sb.append("jobExecutionMode:");
     if (this.jobExecutionMode == null) {
       sb.append("null");
@@ -1572,6 +1665,9 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
     if (priority == null) {
       throw new org.apache.thrift.protocol.TProtocolException("Required field 'priority' was not present! Struct: " + toString());
     }
+    if (jobPhase == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'jobPhase' was not present! Struct: " + toString());
+    }
     if (jobExecutionMode == null) {
       throw new org.apache.thrift.protocol.TProtocolException("Required field 'jobExecutionMode' was not present! Struct: " + toString());
     }
@@ -1661,7 +1757,15 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 3: // JOB_EXECUTION_MODE
+          case 3: // JOB_PHASE
+            if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+              struct.jobPhase = com.softsec.tase.common.rpc.domain.job.JobPhase.findByValue(iprot.readI32());
+              struct.setJobPhaseIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 4: // JOB_EXECUTION_MODE
             if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
               struct.jobExecutionMode = com.softsec.tase.common.rpc.domain.job.JobExecutionMode.findByValue(iprot.readI32());
               struct.setJobExecutionModeIsSet(true);
@@ -1669,7 +1773,7 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 4: // JOB_RETURN_MODE
+          case 5: // JOB_RETURN_MODE
             if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
               struct.jobReturnMode = com.softsec.tase.common.rpc.domain.job.JobReturnMode.findByValue(iprot.readI32());
               struct.setJobReturnModeIsSet(true);
@@ -1677,7 +1781,7 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 5: // TIMEOUT
+          case 6: // TIMEOUT
             if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
               struct.timeout = iprot.readI64();
               struct.setTimeoutIsSet(true);
@@ -1685,7 +1789,7 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 6: // PROGRAM_ID
+          case 7: // PROGRAM_ID
             if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
               struct.programId = iprot.readI64();
               struct.setProgramIdIsSet(true);
@@ -1693,7 +1797,7 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 7: // BUNDLE_TYPE
+          case 8: // BUNDLE_TYPE
             if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
               struct.bundleType = BundleType.findByValue(iprot.readI32());
               struct.setBundleTypeIsSet(true);
@@ -1701,7 +1805,7 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 8: // PROGRAM_NAME
+          case 9: // PROGRAM_NAME
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.programName = iprot.readString();
               struct.setProgramNameIsSet(true);
@@ -1709,7 +1813,7 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 9: // SCRIPT_NAME
+          case 10: // SCRIPT_NAME
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.scriptName = iprot.readString();
               struct.setScriptNameIsSet(true);
@@ -1717,7 +1821,7 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 10: // SCRIPT_PATH
+          case 11: // SCRIPT_PATH
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.scriptPath = iprot.readString();
               struct.setScriptPathIsSet(true);
@@ -1725,7 +1829,7 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 11: // SCRIPT_MD5
+          case 12: // SCRIPT_MD5
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.scriptMd5 = iprot.readString();
               struct.setScriptMd5IsSet(true);
@@ -1733,7 +1837,7 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 12: // EXECUTABLE_NAME
+          case 13: // EXECUTABLE_NAME
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.executableName = iprot.readString();
               struct.setExecutableNameIsSet(true);
@@ -1741,7 +1845,7 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 13: // EXECUTABLE_PATH
+          case 14: // EXECUTABLE_PATH
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.executablePath = iprot.readString();
               struct.setExecutablePathIsSet(true);
@@ -1749,7 +1853,7 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 14: // EXECUTABLE_MD5
+          case 15: // EXECUTABLE_MD5
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.executableMd5 = iprot.readString();
               struct.setExecutableMd5IsSet(true);
@@ -1757,7 +1861,7 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 15: // ENV_VARIABLES
+          case 16: // ENV_VARIABLES
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.envVariables = iprot.readString();
               struct.setEnvVariablesIsSet(true);
@@ -1765,7 +1869,7 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 16: // PARAMETER
+          case 17: // PARAMETER
             if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
               struct.parameter = new com.softsec.tase.common.rpc.domain.job.JobParameter();
               struct.parameter.read(iprot);
@@ -1774,7 +1878,7 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 17: // RESULT_ADDRESS
+          case 18: // RESULT_ADDRESS
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.resultAddress = iprot.readString();
               struct.setResultAddressIsSet(true);
@@ -1809,6 +1913,11 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
       if (struct.priority != null) {
         oprot.writeFieldBegin(PRIORITY_FIELD_DESC);
         oprot.writeI32(struct.priority.getValue());
+        oprot.writeFieldEnd();
+      }
+      if (struct.jobPhase != null) {
+        oprot.writeFieldBegin(JOB_PHASE_FIELD_DESC);
+        oprot.writeI32(struct.jobPhase.getValue());
         oprot.writeFieldEnd();
       }
       if (struct.jobExecutionMode != null) {
@@ -1909,6 +2018,7 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
       TTupleProtocol oprot = (TTupleProtocol) prot;
       oprot.writeI64(struct.taskId);
       oprot.writeI32(struct.priority.getValue());
+      oprot.writeI32(struct.jobPhase.getValue());
       oprot.writeI32(struct.jobExecutionMode.getValue());
       oprot.writeI32(struct.jobReturnMode.getValue());
       oprot.writeI64(struct.programId);
@@ -1955,6 +2065,8 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
       struct.setTaskIdIsSet(true);
       struct.priority = com.softsec.tase.common.rpc.domain.job.JobPriority.findByValue(iprot.readI32());
       struct.setPriorityIsSet(true);
+      struct.jobPhase = com.softsec.tase.common.rpc.domain.job.JobPhase.findByValue(iprot.readI32());
+      struct.setJobPhaseIsSet(true);
       struct.jobExecutionMode = com.softsec.tase.common.rpc.domain.job.JobExecutionMode.findByValue(iprot.readI32());
       struct.setJobExecutionModeIsSet(true);
       struct.jobReturnMode = com.softsec.tase.common.rpc.domain.job.JobReturnMode.findByValue(iprot.readI32());
