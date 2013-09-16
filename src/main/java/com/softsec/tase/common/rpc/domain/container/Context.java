@@ -81,7 +81,7 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
    * 
    * @see com.softsec.tase.common.rpc.domain.job.JobReturnMode
    */
-  public com.softsec.tase.common.rpc.domain.job.JobReturnMode jobReturnMode; // required
+  public com.softsec.tase.common.rpc.domain.job.JobReturnMode jobReturnMode; // optional
   public long timeout; // optional
   public long programId; // required
   /**
@@ -234,7 +234,7 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
   private static final int __TIMEOUT_ISSET_ID = 1;
   private static final int __PROGRAMID_ISSET_ID = 2;
   private byte __isset_bitfield = 0;
-  private _Fields optionals[] = {_Fields.TIMEOUT,_Fields.ENV_VARIABLES,_Fields.PARAMETER,_Fields.RESULT_ADDRESS};
+  private _Fields optionals[] = {_Fields.JOB_RETURN_MODE,_Fields.TIMEOUT,_Fields.ENV_VARIABLES,_Fields.PARAMETER,_Fields.RESULT_ADDRESS};
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
@@ -246,7 +246,7 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
         new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, com.softsec.tase.common.rpc.domain.job.JobPhase.class)));
     tmpMap.put(_Fields.JOB_EXECUTION_MODE, new org.apache.thrift.meta_data.FieldMetaData("jobExecutionMode", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, com.softsec.tase.common.rpc.domain.job.JobExecutionMode.class)));
-    tmpMap.put(_Fields.JOB_RETURN_MODE, new org.apache.thrift.meta_data.FieldMetaData("jobReturnMode", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+    tmpMap.put(_Fields.JOB_RETURN_MODE, new org.apache.thrift.meta_data.FieldMetaData("jobReturnMode", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, com.softsec.tase.common.rpc.domain.job.JobReturnMode.class)));
     tmpMap.put(_Fields.TIMEOUT, new org.apache.thrift.meta_data.FieldMetaData("timeout", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
@@ -286,7 +286,6 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
     com.softsec.tase.common.rpc.domain.job.JobPriority priority,
     com.softsec.tase.common.rpc.domain.job.JobPhase jobPhase,
     com.softsec.tase.common.rpc.domain.job.JobExecutionMode jobExecutionMode,
-    com.softsec.tase.common.rpc.domain.job.JobReturnMode jobReturnMode,
     long programId,
     BundleType bundleType,
     String programName,
@@ -303,7 +302,6 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
     this.priority = priority;
     this.jobPhase = jobPhase;
     this.jobExecutionMode = jobExecutionMode;
-    this.jobReturnMode = jobReturnMode;
     this.programId = programId;
     setProgramIdIsSet(true);
     this.bundleType = bundleType;
@@ -1543,14 +1541,16 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
       sb.append(this.jobExecutionMode);
     }
     first = false;
-    if (!first) sb.append(", ");
-    sb.append("jobReturnMode:");
-    if (this.jobReturnMode == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.jobReturnMode);
+    if (isSetJobReturnMode()) {
+      if (!first) sb.append(", ");
+      sb.append("jobReturnMode:");
+      if (this.jobReturnMode == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.jobReturnMode);
+      }
+      first = false;
     }
-    first = false;
     if (isSetTimeout()) {
       if (!first) sb.append(", ");
       sb.append("timeout:");
@@ -1670,9 +1670,6 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
     }
     if (jobExecutionMode == null) {
       throw new org.apache.thrift.protocol.TProtocolException("Required field 'jobExecutionMode' was not present! Struct: " + toString());
-    }
-    if (jobReturnMode == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'jobReturnMode' was not present! Struct: " + toString());
     }
     // alas, we cannot check 'programId' because it's a primitive and you chose the non-beans generator.
     if (bundleType == null) {
@@ -1926,9 +1923,11 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
         oprot.writeFieldEnd();
       }
       if (struct.jobReturnMode != null) {
-        oprot.writeFieldBegin(JOB_RETURN_MODE_FIELD_DESC);
-        oprot.writeI32(struct.jobReturnMode.getValue());
-        oprot.writeFieldEnd();
+        if (struct.isSetJobReturnMode()) {
+          oprot.writeFieldBegin(JOB_RETURN_MODE_FIELD_DESC);
+          oprot.writeI32(struct.jobReturnMode.getValue());
+          oprot.writeFieldEnd();
+        }
       }
       if (struct.isSetTimeout()) {
         oprot.writeFieldBegin(TIMEOUT_FIELD_DESC);
@@ -2020,7 +2019,6 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
       oprot.writeI32(struct.priority.getValue());
       oprot.writeI32(struct.jobPhase.getValue());
       oprot.writeI32(struct.jobExecutionMode.getValue());
-      oprot.writeI32(struct.jobReturnMode.getValue());
       oprot.writeI64(struct.programId);
       oprot.writeI32(struct.bundleType.getValue());
       oprot.writeString(struct.programName);
@@ -2031,19 +2029,25 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
       oprot.writeString(struct.executablePath);
       oprot.writeString(struct.executableMd5);
       BitSet optionals = new BitSet();
-      if (struct.isSetTimeout()) {
+      if (struct.isSetJobReturnMode()) {
         optionals.set(0);
       }
-      if (struct.isSetEnvVariables()) {
+      if (struct.isSetTimeout()) {
         optionals.set(1);
       }
-      if (struct.isSetParameter()) {
+      if (struct.isSetEnvVariables()) {
         optionals.set(2);
       }
-      if (struct.isSetResultAddress()) {
+      if (struct.isSetParameter()) {
         optionals.set(3);
       }
-      oprot.writeBitSet(optionals, 4);
+      if (struct.isSetResultAddress()) {
+        optionals.set(4);
+      }
+      oprot.writeBitSet(optionals, 5);
+      if (struct.isSetJobReturnMode()) {
+        oprot.writeI32(struct.jobReturnMode.getValue());
+      }
       if (struct.isSetTimeout()) {
         oprot.writeI64(struct.timeout);
       }
@@ -2069,8 +2073,6 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
       struct.setJobPhaseIsSet(true);
       struct.jobExecutionMode = com.softsec.tase.common.rpc.domain.job.JobExecutionMode.findByValue(iprot.readI32());
       struct.setJobExecutionModeIsSet(true);
-      struct.jobReturnMode = com.softsec.tase.common.rpc.domain.job.JobReturnMode.findByValue(iprot.readI32());
-      struct.setJobReturnModeIsSet(true);
       struct.programId = iprot.readI64();
       struct.setProgramIdIsSet(true);
       struct.bundleType = BundleType.findByValue(iprot.readI32());
@@ -2089,21 +2091,25 @@ public class Context implements org.apache.thrift.TBase<Context, Context._Fields
       struct.setExecutablePathIsSet(true);
       struct.executableMd5 = iprot.readString();
       struct.setExecutableMd5IsSet(true);
-      BitSet incoming = iprot.readBitSet(4);
+      BitSet incoming = iprot.readBitSet(5);
       if (incoming.get(0)) {
+        struct.jobReturnMode = com.softsec.tase.common.rpc.domain.job.JobReturnMode.findByValue(iprot.readI32());
+        struct.setJobReturnModeIsSet(true);
+      }
+      if (incoming.get(1)) {
         struct.timeout = iprot.readI64();
         struct.setTimeoutIsSet(true);
       }
-      if (incoming.get(1)) {
+      if (incoming.get(2)) {
         struct.envVariables = iprot.readString();
         struct.setEnvVariablesIsSet(true);
       }
-      if (incoming.get(2)) {
+      if (incoming.get(3)) {
         struct.parameter = new com.softsec.tase.common.rpc.domain.job.JobParameter();
         struct.parameter.read(iprot);
         struct.setParameterIsSet(true);
       }
-      if (incoming.get(3)) {
+      if (incoming.get(4)) {
         struct.resultAddress = iprot.readString();
         struct.setResultAddressIsSet(true);
       }

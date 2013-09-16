@@ -18,7 +18,7 @@ import com.softsec.tase.common.rpc.domain.job.JobStatus;
  */
 public class Task implements Comparable<Task>{
 
-	private long taskId;
+	private Long taskId;
 	
 	private JobPriority taskPriority;
 	
@@ -32,7 +32,7 @@ public class Task implements Comparable<Task>{
 	
 	private JobStatus taskStatus;
 	
-	private long programId;
+	private Long programId;
 	
 	private String executorId;
 	
@@ -48,17 +48,20 @@ public class Task implements Comparable<Task>{
 	 */
 	@Override
 	public int compareTo(Task task) {
+		if (task != null && task.getTaskId() != 0L && task.getTaskId() == taskId) {
+			return 0;
+		}
 		if (taskPriority.getValue() == task.getTaskPriority().getValue()) {
 			return Long.valueOf(loadedTime).compareTo(task.getLoadedTime());
 		}
 		return Integer.valueOf(taskPriority.getValue()).compareTo(task.getTaskPriority().getValue());
 	}
 
-	public long getTaskId() {
+	public Long getTaskId() {
 		return taskId;
 	}
 
-	public void setTaskId(long taskId) {
+	public void setTaskId(Long taskId) {
 		this.taskId = taskId;
 	}
 
@@ -111,11 +114,11 @@ public class Task implements Comparable<Task>{
 		this.taskStatus = taskStatus;
 	}
 
-	public long getProgramId() {
+	public Long getProgramId() {
 		return programId;
 	}
 
-	public void setProgramId(long programId) {
+	public void setProgramId(Long programId) {
 		this.programId = programId;
 	}
 
@@ -147,28 +150,7 @@ public class Task implements Comparable<Task>{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ (int) (loadedTime ^ (loadedTime >>> 32));
-		result = prime * result
-				+ ((executorId == null) ? 0 : executorId.hashCode());
-		result = prime * result
-				+ ((jobPhase == null) ? 0 : jobPhase.hashCode());
-		result = prime * result + (int) (programId ^ (programId >>> 32));
 		result = prime * result + (int) (taskId ^ (taskId >>> 32));
-		result = prime
-				* result
-				+ ((taskOperationRequirement == null) ? 0
-						: taskOperationRequirement.hashCode());
-		result = prime * result
-				+ ((taskParameter == null) ? 0 : taskParameter.hashCode());
-		result = prime * result
-				+ ((taskPriority == null) ? 0 : taskPriority.hashCode());
-		result = prime
-				* result
-				+ ((taskResourceRequirement == null) ? 0
-						: taskResourceRequirement.hashCode());
-		result = prime * result
-				+ ((taskStatus == null) ? 0 : taskStatus.hashCode());
 		return result;
 	}
 
@@ -181,39 +163,7 @@ public class Task implements Comparable<Task>{
 		if (getClass() != obj.getClass())
 			return false;
 		Task other = (Task) obj;
-		if (loadedTime != other.loadedTime)
-			return false;
-		if (executorId == null) {
-			if (other.executorId != null)
-				return false;
-		} else if (!executorId.equals(other.executorId))
-			return false;
-		if (jobPhase != other.jobPhase)
-			return false;
-		if (programId != other.programId)
-			return false;
 		if (taskId != other.taskId)
-			return false;
-		if (taskOperationRequirement == null) {
-			if (other.taskOperationRequirement != null)
-				return false;
-		} else if (!taskOperationRequirement
-				.equals(other.taskOperationRequirement))
-			return false;
-		if (taskParameter == null) {
-			if (other.taskParameter != null)
-				return false;
-		} else if (!taskParameter.equals(other.taskParameter))
-			return false;
-		if (taskPriority != other.taskPriority)
-			return false;
-		if (taskResourceRequirement == null) {
-			if (other.taskResourceRequirement != null)
-				return false;
-		} else if (!taskResourceRequirement
-				.equals(other.taskResourceRequirement))
-			return false;
-		if (taskStatus != other.taskStatus)
 			return false;
 		return true;
 	}

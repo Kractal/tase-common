@@ -47,7 +47,7 @@ struct Context {
 	2:	required	Job.JobPriority			priority,
 	3:	required	Job.JobPhase			jobPhase,
 	4:	required	Job.JobExecutionMode	jobExecutionMode,
-	5:	required	Job.JobReturnMode 		jobReturnMode,
+	5:	optional 	Job.JobReturnMode 		jobReturnMode,
 	6:	optional	i64						timeout,
 	
 	7:	required	i64						programId,
